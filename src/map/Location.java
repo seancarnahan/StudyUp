@@ -7,15 +7,10 @@ public class Location {
 
 	public Location(double lat, double lon) {
 		this.lat = lat;
+		this.setLat(lat);
+		this.lon = lon;
 		this.setLon(lon);
-	}
-
-	public double getLat() {
-		return lat;
-	}
-
-	public void setLat(double lat) {
-		this.lat = lat;
+		// TODO Auto-generated constructor stub
 	}
 
 	public double getLon() {
@@ -24,6 +19,14 @@ public class Location {
 
 	public void setLon(double lon) {
 		this.lon = lon;
+	}
+
+	public double getLat() {
+		return lat;
+	}
+
+	public void setLat(double lat) {
+		this.lat = lat;
 	}
 
 }

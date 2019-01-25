@@ -75,10 +75,10 @@
 	<%
 	String place = request.getParameter("place");
 	if (place != null && !place.isEmpty()) {
-       	Location loc = Lookup.lookupPlace(place);
-       	if (loc != null) {
-        	double lat = loc.getLat();
-        	double lon = loc.getLon(); %>
+		Location loc = Lookup.lookupPlace(place);
+		if (loc != null) {
+			double lat = loc.getLat();
+			double lon = loc.getLon(); %>
         	<script>gotoLoc(<%=lat%>, <%=lon%>);</script>
        	<%}
        }%>
