@@ -49,7 +49,7 @@ public class EventServiceImpl implements EventService {
 		for (Integer key : eventData.keySet()) {
 			Event ithEvent= eventData.get(key);
 			// Checks if an event date is before today, if yes, then add to the past event list.
-			if(ithEvent.getDate().before(new Date())) {
+			if(ithEvent.beforeDate((new Date()))) {
 				pastEvents.add(ithEvent);
 			}
 		}
