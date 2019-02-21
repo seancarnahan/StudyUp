@@ -1,6 +1,8 @@
 language: java
 jdk: openjdk11
-script: 
+script:
     - mvn clean install test
+    - mvn compile
+    - mvn findbugs:findbugs
 after_success:
     - mvn jacoco:report coveralls:report
