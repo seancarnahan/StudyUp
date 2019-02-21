@@ -64,7 +64,7 @@ class EventServiceImplTest {
 		eventStudents.add(student);
 		event.setStudents(eventStudents);
 		
-		DataStorage.eventData.put(event.getEventID(), event);
+		DataStorage.setEvent(event.getEventID(), event);
 		
 		//Create Event2: two students added
 		Event eventTwo = new Event();
@@ -78,7 +78,7 @@ class EventServiceImplTest {
 		eventStudentsTwo.add(studentTwo);
 		eventTwo.setStudents(eventStudentsTwo);
 		
-		DataStorage.eventData.put(eventTwo.getEventID(), eventTwo);
+		DataStorage.setEvent(eventTwo.getEventID(), eventTwo);
 		
 		//Create Event3: no students added
 		Event eventThree = new Event();
@@ -90,12 +90,12 @@ class EventServiceImplTest {
 		eventThree.setLocation(locationThree);
 		
 		
-		DataStorage.eventData.put(eventThree.getEventID(), eventThree);
+		DataStorage.setEvent(eventThree.getEventID(), eventThree);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		DataStorage.eventData.clear();
+		DataStorage.clear();
 	}
 
 	
@@ -104,7 +104,7 @@ class EventServiceImplTest {
 	void testUpdateEventName_GoodCase() throws StudyUpException {
 		int eventID = 1;
 		eventServiceImpl.updateEventName(eventID, "Renamed Event 1");
-		assertEquals("Renamed Event 1", DataStorage.eventData.get(eventID).getName());
+		assertEquals("Renamed Event 1", DataStorage.getEvent(eventID).getName());
 	}
 	
 	@Test
@@ -112,7 +112,7 @@ class EventServiceImplTest {
 		//exposes bug -> 20 char length should not throw exception
 		int eventID = 1;
 		eventServiceImpl.updateEventName(eventID, "Thisstringistwentych");
-		assertEquals("Thisstringistwentych", DataStorage.eventData.get(eventID).getName());
+		assertEquals("Thisstringistwentych", DataStorage.getEvent(eventID).getName());
 	}
 	
 	@Test
@@ -127,7 +127,7 @@ class EventServiceImplTest {
 	void testUpdateEventName_emptyString() throws StudyUpException {
 		int eventID = 1;
 		eventServiceImpl.updateEventName(eventID, "");
-		assertEquals("", DataStorage.eventData.get(eventID).getName());
+		assertEquals("", DataStorage.getEvent(eventID).getName());
 	}
 	
 	@Test
@@ -150,7 +150,7 @@ class EventServiceImplTest {
 		studentThree.setId(3);
 		eventServiceImpl.addStudentToEvent(studentThree, eventId);
 		
-		Event event = DataStorage.eventData.get(eventId);
+		Event event = DataStorage.getEvent(eventId);
 		List<Student> presentStudents = event.getStudents();
 		assertEquals("Edgar", presentStudents.get(0).getFirstName());	
 	}
@@ -165,7 +165,7 @@ class EventServiceImplTest {
 		studentThree.setId(3);
 		eventServiceImpl.addStudentToEvent(studentThree, eventId);
 		
-		Event event = DataStorage.eventData.get(eventId);
+		Event event = DataStorage.getEvent(eventId);
 		List<Student> presentStudents = event.getStudents();
 		assertEquals("Edgar", presentStudents.get(1).getFirstName());
 	}

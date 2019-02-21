@@ -2,6 +2,7 @@ package edu.studyup.util;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import edu.studyup.entity.Event;
 
@@ -14,5 +15,26 @@ import edu.studyup.entity.Event;
  * 
  */
 public class DataStorage {
-	public static Map<Integer, Event> eventData = new HashMap<Integer, Event>();
+	private static final Map<Integer, Event> eventData = new HashMap<Integer, Event>();
+	
+	public static Event getEvent(int eventID) {
+		return eventData.get(eventID);
+	}
+	
+	public static void setEvent(int eventID, Event value) {
+		eventData.put(eventID, value);
+	}
+	
+	public static Set<Integer> keySet() {
+		return eventData.keySet();
+	}
+	
+	public static Event deleteEvent(int eventID) {
+		return eventData.remove(eventID);
+	}
+
+	public static void clear() {
+		eventData.clear();
+		
+	}
 }
