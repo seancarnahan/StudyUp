@@ -45,7 +45,7 @@ public class EventServiceImpl implements EventService {
 		for (Integer key : DataStorage.keySet()) {
 			Event ithEvent= DataStorage.getEvent(key);
 			// Checks if an event date is before today, if yes, then add to the past event list.
-			if(ithEvent.getDate().before(new Date())) {
+			if(ithEvent.beforeDate((new Date()))) {
 				pastEvents.add(ithEvent);
 			}
 		}

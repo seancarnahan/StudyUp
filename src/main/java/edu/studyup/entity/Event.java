@@ -44,13 +44,13 @@ public class Event {
 	public void setStudents(List<Student> students) {
 		this.students = students;
 	}
-
-	public Date getDate() {
-		return date;
+	
+	public boolean beforeDate(Date compareDate) {
+		return date.before(compareDate);
 	}
 
 	public void setDate(Date date) {
-		this.date = date;
+		this.date = new Date(date.getTime());
 	}
 
 	public int getEventID() {
