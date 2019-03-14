@@ -2,7 +2,7 @@
 set -e
 
 if [ -z "$PROXY_PORT" ]; then
-    export PROXY_PORT=8888
+    export PROXY_PORT=8080
 fi
 
 if [ -z "$REDIS_HOST" ]; then
